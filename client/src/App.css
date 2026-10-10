@@ -1,0 +1,19 @@
+
+.app {
+  max-width: 900px;
+  margin: 100px auto;
+  padding: 24px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 12px;
+}
+
+.status {
+  margin-top: 24px;
+  color: #167d45;
+  font-weight: bold;
+}
