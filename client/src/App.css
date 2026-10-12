@@ -1,7 +1,8 @@
 
+
 .app {
   max-width: 900px;
-  margin: 100px auto;
+  margin: 80px auto;
   padding: 24px;
   font-family: Arial, sans-serif;
   text-align: center;
@@ -12,8 +13,22 @@ h1 {
   margin-bottom: 12px;
 }
 
+.health-card {
+  margin: 32px auto;
+  padding: 24px;
+  max-width: 500px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
 .status {
-  margin-top: 24px;
   color: #167d45;
+  font-weight: bold;
+}
+
+.error {
+  color: #b42318;
   font-weight: bold;
 }
