@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import LiveMap from './components/LiveMap';
+import CitizenStatusPanel from './components/CitizenStatusPanel';
 
 function App() {
   const [health, setHealth] = useState(null);
@@ -96,6 +97,12 @@ function App() {
             <h2>Shelters</h2>
             <p>Nearby safe shelters will appear here.</p>
           </article>
+
+          
+          <article className="overview-card citizen-status-card">
+           <CitizenStatusPanel />
+          </article>
+
         </section>
       </main>
     </div>
