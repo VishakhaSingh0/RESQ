@@ -1,34 +1,145 @@
 
+#root {
+  min-height: 100vh;
+}
 
-.app {
-  max-width: 900px;
-  margin: 80px auto;
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f3f6fa;
+}
+
+.dashboard-main {
+  flex: 1;
+  min-width: 0;
+  padding: 36px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  color: #e05252;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  color: #102a43;
+  font-size: clamp(26px, 3vw, 36px);
+}
+
+.dashboard-subtitle {
+  margin: 10px 0 0;
+  color: #627d98;
+  line-height: 1.6;
+}
+
+.header-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border: 1px solid #d9e2ec;
+  border-radius: 30px;
+  background: white;
+  color: #334e68;
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.header-dot,
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #2f9e67;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.overview-card {
   padding: 24px;
-  font-family: Arial, sans-serif;
-  text-align: center;
+  border: 1px solid #e1e8f0;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 4px 16px rgb(16 42 67 / 4%);
 }
 
-h1 {
-  font-size: 3rem;
-  margin-bottom: 12px;
+.card-label {
+  color: #829ab1;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.3px;
 }
 
-.health-card {
-  margin: 32px auto;
-  padding: 24px;
-  max-width: 500px;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+.overview-card h2 {
+  margin: 12px 0;
+  color: #102a43;
+  font-size: 19px;
 }
 
-.status {
-  color: #167d45;
-  font-weight: bold;
+.overview-card p {
+  color: #627d98;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
 }
 
-.error {
-  color: #b42318;
-  font-weight: bold;
+.overview-card .status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #247a50;
+  font-weight: 600;
 }
+
+.overview-card .error {
+  color: #c53030;
+}
+
+@media (max-width: 900px) {
+  .dashboard-main {
+    padding: 24px;
+  }
+
+  .dashboard-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .dashboard-main {
+    padding: 20px 16px;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .live-map-card {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+}
+
+
+

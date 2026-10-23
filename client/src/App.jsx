@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from 'react';
 import './App.css';
+import Sidebar from './components/Sidebar';
+import LiveMap from './components/LiveMap';
 
 function App() {
   const [health, setHealth] = useState(null);
@@ -33,34 +35,79 @@ function App() {
   }, []);
 
   return (
-    <main className="app">
-      <h1>RESQ</h1>
+    <div className="dashboard-layout">
+      <Sidebar />
 
-      <p>
-        Location-Aware Disaster Evacuation
-        and Rescue Coordination Platform
-      </p>
+      <main className="dashboard-main">
+        <header className="dashboard-header">
+          <div>
+            <p className="eyebrow">EMERGENCY RESPONSE PLATFORM</p>
+            <h1>Welcome to RESQ</h1>
+            <p className="dashboard-subtitle">
+              Location-Aware Disaster Evacuation and Rescue Coordination
+            </p>
+          </div>
 
-      <section className="health-card">
-        <h2>System Status</h2>
+          <div className="header-badge">
+            <span className="header-dot" />
+            Live Dashboard
+          </div>
+        </header>
 
-        {loading && <p>Checking backend connection...</p>}
+        <section className="dashboard-cards">
+          <article className="overview-card">
+            <span className="card-label">SYSTEM</span>
+            <h2>System Health</h2>
 
-        {!loading && health && (
-          <>
-            <p className="status">Backend API: Running</p>
-            <p>Database: {health.data.database}</p>
-            <p>{health.message}</p>
-          </>
-        )}
+            {loading && <p>Checking backend connection...</p>}
 
-        {!loading && error && (
-          <p className="error">Connection failed: {error}</p>
-        )}
-      </section>
-    </main>
+            {!loading && health && (
+              <>
+                <p className="status">
+                  <span className="status-dot" />
+                  Backend API: Running
+                </p>
+                <p>Database: {health.data.database}</p>
+                <p>{health.message}</p>
+              </>
+            )}
+
+            {!loading && error && (
+              <p className="error">
+                Connection failed: {error}
+              </p>
+            )}
+          </article>
+
+         
+         <article className="overview-card live-map-card">
+          <LiveMap />
+          </article>
+
+
+          <article className="overview-card">
+            <span className="card-label">PUBLIC SAFETY</span>
+            <h2>Emergency Alerts</h2>
+            <p>Important disaster alerts will appear here.</p>
+          </article>
+
+          <article className="overview-card">
+            <span className="card-label">SUPPORT</span>
+            <h2>Shelters</h2>
+            <p>Nearby safe shelters will appear here.</p>
+          </article>
+        </section>
+      </main>
+    </div>
   );
 }
 
 export default App;
+
+
+
+       
+   
+        
+   
 
