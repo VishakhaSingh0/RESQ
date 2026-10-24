@@ -4,6 +4,7 @@ import './App.css';
 import Sidebar from './components/Sidebar';
 import LiveMap from './components/LiveMap';
 import CitizenStatusPanel from './components/CitizenStatusPanel';
+import EmergencyForm from './components/EmergencyForm';
 
 function App() {
   const [health, setHealth] = useState(null);
@@ -101,6 +102,10 @@ function App() {
           
           <article className="overview-card citizen-status-card">
            <CitizenStatusPanel />
+          </article>
+
+          <article className="overview-card emergency-form-card">
+             <EmergencyForm />
           </article>
 
         </section>

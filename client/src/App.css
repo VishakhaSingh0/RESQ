@@ -127,6 +127,25 @@
     flex-direction: column;
   }
 
+/* Dashboard alignment fixes */
+.dashboard-cards > .overview-card {
+  min-width: 0;
+}
+
+.emergency-form-card {
+  grid-column: 1 / -1;
+  min-width: 0;
+}
+
+.emergency-form-card > * {
+  width: 100%;
+  min-width: 0;
+}
+
+.live-map-card {
+  min-width: 0;
+}
+
   .dashboard-main {
     padding: 20px 16px;
   }
@@ -139,6 +158,11 @@
   grid-column: 1 / -1;
   min-width: 0;
 }
+}
+
+.emergency-form-card {
+  grid-column: 1 / -1;
+  min-width: 0;
 }
 
 
