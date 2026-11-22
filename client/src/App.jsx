@@ -1,5 +1,4 @@
 
-
 import { useEffect, useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
@@ -7,6 +6,7 @@ import LiveMap from './components/LiveMap';
 import CitizenStatusPanel from './components/CitizenStatusPanel';
 import EmergencyForm from './components/EmergencyForm';
 import ShelterModule from './components/ShelterModule';
+import RescueTeam from './components/RescueTeam';
 
 function App() {
   const [activePage, setActivePage] = useState('Overview');
@@ -135,7 +135,9 @@ function App() {
         {activePage === 'Shelters' && (
           <ShelterModule />
         )}
-
+        {activePage === 'Rescue Teams' && (
+          <RescueTeam />
+      )}
         {activePage === 'Live Map' && (
           <section className="overview-card">
             <h2>Live Map</h2>

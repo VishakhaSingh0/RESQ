@@ -1,0 +1,170 @@
+
+.rescue-page {
+  padding: 25px;
+  color: #1e293b;
+}
+
+.rescue-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.rescue-header h1 {
+  margin: 0;
+  font-size: 27px;
+}
+
+.rescue-header p {
+  color: #64748b;
+}
+
+.add-team-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.rescue-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 25px;
+}
+
+.rescue-stat-card,
+.rescue-team-card,
+.rescue-form-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.rescue-stat-card h3 {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.rescue-stat-card h2 {
+  font-size: 28px;
+}
+
+.rescue-search {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  margin-bottom: 22px;
+  box-sizing: border-box;
+}
+
+.rescue-form-card {
+  margin-bottom: 25px;
+}
+
+.rescue-form-card form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.rescue-form-card input,
+.rescue-form-card select {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+}
+
+.rescue-form-actions {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+}
+
+.rescue-form-actions button,
+.rescue-card-actions button {
+  padding: 9px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.rescue-team-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.rescue-team-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.rescue-team-top h2 {
+  font-size: 19px;
+}
+
+.team-status {
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+.team-status.available {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.team-status.busy {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.team-status.offline {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.rescue-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.rescue-card-actions button:first-child {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.rescue-card-actions button:last-child {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+@media (max-width: 768px) {
+  .rescue-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rescue-team-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rescue-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .rescue-form-card form {
+    grid-template-columns: 1fr;
+  }
+}
