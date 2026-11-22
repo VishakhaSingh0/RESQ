@@ -1,0 +1,89 @@
+
+/* Add Shelter Form */
+
+.shelter-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0;
+}
+
+.add-shelter-button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 11px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-shelter-button:hover {
+  background: #1d4ed8;
+}
+
+.add-shelter-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.shelter-form {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 22px;
+}
+
+.shelter-form h3 {
+  margin: 0 0 18px;
+}
+
+.shelter-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.shelter-form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.shelter-form-grid input,
+.shelter-form-grid select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 14px;
+}
+
+.shelter-form-grid input:focus,
+.shelter-form-grid select:focus {
+  outline: 2px solid #93c5fd;
+  border-color: #2563eb;
+}
+
+.shelter-form-error {
+  color: #dc2626;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.shelter-success {
+  color: #15803d;
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+@media (max-width: 600px) {
+  .shelter-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

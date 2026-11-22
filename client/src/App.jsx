@@ -1,12 +1,15 @@
 
+
 import { useEffect, useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
 import LiveMap from './components/LiveMap';
 import CitizenStatusPanel from './components/CitizenStatusPanel';
 import EmergencyForm from './components/EmergencyForm';
+import ShelterModule from './components/ShelterModule';
 
 function App() {
+  const [activePage, setActivePage] = useState('Overview');
   const [health, setHealth] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -38,84 +41,128 @@ function App() {
 
   return (
     <div className="dashboard-layout">
-      <Sidebar />
+      <Sidebar
+        activePage={activePage}
+        onNavigate={setActivePage}
+      />
 
       <main className="dashboard-main">
-        <header className="dashboard-header">
-          <div>
-            <p className="eyebrow">EMERGENCY RESPONSE PLATFORM</p>
-            <h1>Welcome to RESQ</h1>
-            <p className="dashboard-subtitle">
-              Location-Aware Disaster Evacuation and Rescue Coordination
-            </p>
-          </div>
 
-          <div className="header-badge">
-            <span className="header-dot" />
-            Live Dashboard
-          </div>
-        </header>
-
-        <section className="dashboard-cards">
-          <article className="overview-card">
-            <span className="card-label">SYSTEM</span>
-            <h2>System Health</h2>
-
-            {loading && <p>Checking backend connection...</p>}
-
-            {!loading && health && (
-              <>
-                <p className="status">
-                  <span className="status-dot" />
-                  Backend API: Running
+        {activePage === 'Overview' && (
+          <>
+            <header className="dashboard-header">
+              <div>
+                <p className="eyebrow">
+                  EMERGENCY RESPONSE PLATFORM
                 </p>
-                <p>Database: {health.data.database}</p>
-                <p>{health.message}</p>
-              </>
-            )}
+                <h1>Welcome to RESQ</h1>
+                <p className="dashboard-subtitle">
+                  Location-Aware Disaster Evacuation and Rescue Coordination
+                </p>
+              </div>
 
-            {!loading && error && (
-              <p className="error">
-                Connection failed: {error}
-              </p>
-            )}
-          </article>
+              <div className="header-badge">
+                <span className="header-dot" />
+                Live Dashboard
+              </div>
+            </header>
 
-         
-         <article className="overview-card live-map-card">
-          <LiveMap />
-          </article>
+            <section className="dashboard-cards">
 
+              <article className="overview-card">
+                <span className="card-label">SYSTEM</span>
+                <h2>System Health</h2>
 
-          <article className="overview-card">
-            <span className="card-label">PUBLIC SAFETY</span>
+                {loading && (
+                  <p>Checking backend connection...</p>
+                )}
+
+                {!loading && health && (
+                  <>
+                    <p className="status">
+                      <span className="status-dot" />
+                      Backend API: Running
+                    </p>
+                    <p>Database: {health.data.database}</p>
+                    <p>{health.message}</p>
+                  </>
+                )}
+
+                {!loading && error && (
+                  <p className="error">
+                    Connection failed: {error}
+                  </p>
+                )}
+              </article>
+
+              <article className="overview-card live-map-card">
+                <LiveMap />
+              </article>
+
+              <article className="overview-card">
+                <span className="card-label">PUBLIC SAFETY</span>
+                <h2>Emergency Alerts</h2>
+                <p>Important disaster alerts will appear here.</p>
+              </article>
+
+              <article className="overview-card">
+                <span className="card-label">SUPPORT</span>
+                <h2>Shelters</h2>
+                <p>
+                  Open Shelter Information from the sidebar
+                  to view available shelter details.
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setActivePage('Shelters')}
+                >
+                  View Shelters
+                </button>
+              </article>
+
+              <article className="overview-card citizen-status-card">
+                <CitizenStatusPanel />
+              </article>
+
+              <article className="overview-card emergency-form-card">
+                <EmergencyForm />
+              </article>
+
+            </section>
+          </>
+        )}
+
+        {activePage === 'Shelters' && (
+          <ShelterModule />
+        )}
+
+        {activePage === 'Live Map' && (
+          <section className="overview-card">
+            <h2>Live Map</h2>
+            <LiveMap />
+          </section>
+        )}
+
+        {activePage === 'Alerts' && (
+          <section className="overview-card">
             <h2>Emergency Alerts</h2>
             <p>Important disaster alerts will appear here.</p>
-          </article>
+          </section>
+        )}
 
-          <article className="overview-card">
-            <span className="card-label">SUPPORT</span>
-            <h2>Shelters</h2>
-            <p>Nearby safe shelters will appear here.</p>
-          </article>
+        {activePage === 'Settings' && (
+          <section className="overview-card">
+            <h2>Settings</h2>
+            <p>RESQ settings will be available here.</p>
+          </section>
+        )}
 
-          
-          <article className="overview-card citizen-status-card">
-           <CitizenStatusPanel />
-          </article>
-
-          <article className="overview-card emergency-form-card">
-             <EmergencyForm />
-          </article>
-
-        </section>
       </main>
     </div>
   );
 }
 
 export default App;
-
 
 
        

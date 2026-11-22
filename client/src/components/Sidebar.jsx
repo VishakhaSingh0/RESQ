@@ -1,4 +1,5 @@
 
+
 import './Sidebar.css';
 
 const navItems = [
@@ -9,7 +10,7 @@ const navItems = [
   { label: 'Settings', icon: '⚙' },
 ];
 
-function Sidebar() {
+function Sidebar({ activePage, onNavigate }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
@@ -23,11 +24,17 @@ function Sidebar() {
       <p className="sidebar-label">WORKSPACE</p>
 
       <nav className="sidebar-nav">
-        {navItems.map((item, index) => (
+        {navItems.map((item) => (
           <button
             key={item.label}
-            className={`nav-item ${index === 0 ? 'active' : ''}`}
+            className={`nav-item ${
+              activePage === item.label ? 'active' : ''
+            }`}
             type="button"
+            onClick={() => onNavigate(item.label)}
+            aria-current={
+              activePage === item.label ? 'page' : undefined
+            }
           >
             <span className="nav-icon">{item.icon}</span>
             <span>{item.label}</span>
@@ -38,7 +45,7 @@ function Sidebar() {
       <div className="sidebar-footer">
         <span className="online-dot" />
         <span>RESQ System</span>
-        <small>Dashboard</small>
+        <small>{activePage}</small>
       </div>
     </aside>
   );
