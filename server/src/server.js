@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const healthRoutes = require('./routes/health.routes');
+const citizensRoutes = require('./routes/citizens.routes');
 const connectDB = require('./config/db');
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(
 app.use(express.json());
 
 app.use('/api/v1/health', healthRoutes);
+app.use('/api/v1/citizens', citizensRoutes);
 
 const PORT = process.env.PORT || 5001;
 
@@ -29,4 +31,5 @@ async function startServer() {
 }
 
 startServer();
+
 
