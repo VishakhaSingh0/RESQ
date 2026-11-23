@@ -8,6 +8,7 @@ import EmergencyForm from './components/EmergencyForm';
 import ShelterModule from './components/ShelterModule';
 import RescueTeam from './components/RescueTeam';
 import Alerts from './components/Alerts';
+import Settings from './components/Settings';
 
 function App() {
   const [activePage, setActivePage] = useState('Overview');
@@ -151,12 +152,8 @@ function App() {
               )}
 
         {activePage === 'Settings' && (
-          <section className="overview-card">
-            <h2>Settings</h2>
-            <p>RESQ settings will be available here.</p>
-          </section>
-        )}
-
+           <Settings />
+          )}
       </main>
     </div>
   );
