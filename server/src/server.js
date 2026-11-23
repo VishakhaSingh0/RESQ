@@ -9,6 +9,7 @@ const citizensRoutes = require('./routes/citizens.routes');
 const connectDB = require('./config/db');
 const sheltersRoutes = require('./routes/shelters.routes');
 const rescueTeamRoutes = require('./routes/rescueTeam.routes');
+const alertsRoutes = require('./routes/alerts.routes');
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use('/api/v1/health', healthRoutes);
 app.use('/api/v1/citizens', citizensRoutes);
 app.use('/api/v1/shelters', sheltersRoutes);
 app.use('/api/v1/rescue-teams', rescueTeamRoutes);
+app.use('/api/v1/alerts', alertsRoutes);
 
 const PORT = process.env.PORT || 5001;
 

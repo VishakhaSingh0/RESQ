@@ -1,0 +1,54 @@
+
+.alerts-container {
+  padding: 20px;
+  color: #1f2937;
+}
+
+.alerts-container h2 {
+  margin-bottom: 8px;
+}
+
+.alert-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.alert-form input,
+.alert-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.alert-form button,
+.alert-item button {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.alert-item {
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.alert-item h3 {
+  margin-top: 0;
+}
+
+.alert-item button {
+  margin-right: 8px;
+  margin-top: 8px;
+}
+
+.alert-item button:last-child {
+  background: #dc2626;
+}

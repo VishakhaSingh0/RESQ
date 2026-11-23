@@ -7,6 +7,7 @@ import CitizenStatusPanel from './components/CitizenStatusPanel';
 import EmergencyForm from './components/EmergencyForm';
 import ShelterModule from './components/ShelterModule';
 import RescueTeam from './components/RescueTeam';
+import Alerts from './components/Alerts';
 
 function App() {
   const [activePage, setActivePage] = useState('Overview');
@@ -146,11 +147,8 @@ function App() {
         )}
 
         {activePage === 'Alerts' && (
-          <section className="overview-card">
-            <h2>Emergency Alerts</h2>
-            <p>Important disaster alerts will appear here.</p>
-          </section>
-        )}
+            <Alerts />
+              )}
 
         {activePage === 'Settings' && (
           <section className="overview-card">
