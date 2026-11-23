@@ -24,7 +24,8 @@
 }
 
 .alert-form button,
-.alert-item button {
+.alert-item button,
+.ai-suggestion button {
   padding: 10px 14px;
   border: none;
   border-radius: 6px;
@@ -51,4 +52,21 @@
 
 .alert-item button:last-child {
   background: #dc2626;
+}
+
+.ai-suggestion {
+  padding: 16px;
+  margin: 16px 0;
+  border: 1px solid #2563eb;
+  border-radius: 8px;
+  background: #eff6ff;
+}
+
+.ai-suggestion h3 {
+  margin-top: 0;
+  color: #1d4ed8;
+}
+
+.ai-suggestion p {
+  margin: 8px 0;
 }

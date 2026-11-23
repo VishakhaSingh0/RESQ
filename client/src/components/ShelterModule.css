@@ -1,6 +1,43 @@
 
-/* Add Shelter Form */
+/* Main Shelter Section */
+.shelter-module {
+  width: 100%;
+  box-sizing: border-box;
+  color: #243b53;
+}
 
+/* Header */
+.shelter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.shelter-header h2 {
+  margin: 0 0 8px;
+  color: #102a43;
+  font-size: 24px;
+}
+
+.shelter-header p {
+  margin: 0;
+  color: #627d98;
+  font-size: 14px;
+}
+
+.demo-label {
+  background: #e6f4ea;
+  color: #15803d;
+  padding: 7px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Add Shelter Button */
 .shelter-actions {
   display: flex;
   justify-content: flex-end;
@@ -27,6 +64,195 @@
   cursor: not-allowed;
 }
 
+/* Search and Filter */
+.shelter-controls {
+  display: flex;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.shelter-controls input,
+.shelter-controls select {
+  padding: 11px 13px;
+  border: 1px solid #d9e2ec;
+  border-radius: 8px;
+  background: white;
+  font-size: 14px;
+}
+
+.shelter-controls input {
+  flex: 1;
+  min-width: 0;
+}
+
+.shelter-controls select {
+  min-width: 145px;
+}
+
+.shelter-controls input:focus,
+.shelter-controls select:focus {
+  outline: 2px solid #bfdbfe;
+  border-color: #2563eb;
+}
+
+/* Summary Cards */
+.shelter-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.shelter-summary > div {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 18px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.shelter-summary h3 {
+  margin: 0 0 6px;
+  color: #2563eb;
+  font-size: 25px;
+}
+
+.shelter-summary p {
+  margin: 0;
+  color: #627d98;
+  font-size: 13px;
+}
+
+/* Shelter Cards */
+.shelter-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.shelter-card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.shelter-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.shelter-card h3 {
+  margin: 0 0 7px;
+  color: #102a43;
+  font-size: 17px;
+}
+
+.shelter-card-top p {
+  margin: 0;
+  color: #627d98;
+  font-size: 13px;
+}
+
+.shelter-status {
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.shelter-status.available {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.shelter-status.limited {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.shelter-status.full {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.shelter-address {
+  color: #627d98;
+  font-size: 13px;
+  margin: 10px 0 16px;
+}
+
+/* Capacity */
+.shelter-capacity {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 13px;
+  margin-bottom: 9px;
+}
+
+.shelter-capacity span {
+  color: #627d98;
+}
+
+.capacity-track {
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.capacity-fill {
+  height: 100%;
+  background: #2563eb;
+  border-radius: 10px;
+}
+
+/* Facilities */
+.shelter-facilities {
+  margin-top: 16px;
+  font-size: 13px;
+}
+
+.shelter-facilities > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.shelter-facilities span {
+  background: #eff6ff;
+  color: #1d4ed8;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.shelter-coordinates {
+  color: #829ab1;
+  font-size: 11px;
+  margin: 14px 0 0;
+}
+
+.no-shelters {
+  color: #627d98;
+  font-size: 14px;
+  padding: 12px;
+}
+
+.shelter-success {
+  color: #15803d;
+  font-weight: 600;
+  margin: 12px 0;
+}
+
+/* Add Shelter Form */
 .shelter-form {
   background: white;
   border: 1px solid #e2e8f0;
@@ -76,13 +302,20 @@
   margin-bottom: 14px;
 }
 
-.shelter-success {
-  color: #15803d;
-  font-weight: 600;
-  margin: 12px 0;
-}
+/* Mobile Layout */
+@media (max-width: 700px) {
+  .shelter-list {
+    grid-template-columns: 1fr;
+  }
 
-@media (max-width: 600px) {
+  .shelter-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .shelter-controls {
+    flex-direction: column;
+  }
+
   .shelter-form-grid {
     grid-template-columns: 1fr;
   }
