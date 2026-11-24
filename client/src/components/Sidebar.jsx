@@ -1,5 +1,4 @@
 
-
 import './Sidebar.css';
 
 const navItems = [
@@ -16,9 +15,10 @@ function Sidebar({ activePage, onNavigate }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <div className="brand-icon">R</div>
+        <div className="brand-icon">N</div>
+
         <div>
-          <h2>RESQ</h2>
+          <h2>NEXORA</h2>
           <span>Emergency Response</span>
         </div>
       </div>
@@ -46,7 +46,7 @@ function Sidebar({ activePage, onNavigate }) {
 
       <div className="sidebar-footer">
         <span className="online-dot" />
-        <span>RESQ System</span>
+        <span>NEXORA System</span>
         <small>{activePage}</small>
       </div>
     </aside>

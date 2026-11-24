@@ -32,7 +32,7 @@ function App() {
 
         setHealth(result);
       } catch (err) {
-        setError(err.message || 'Unable to connect to RESQ API.');
+        setError(err.message || 'Unable to connect to NEXORA API.');
       } finally {
         setLoading(false);
       }
@@ -55,9 +55,11 @@ function App() {
             <header className="dashboard-header">
               <div>
                 <p className="eyebrow">
-                  EMERGENCY RESPONSE PLATFORM
+                  NEXORA EMERGENCY RESPONSE PLATFORM
                 </p>
-                <h1>Welcome to RESQ</h1>
+
+                <h1>Welcome to NEXORA</h1>
+
                 <p className="dashboard-subtitle">
                   Location-Aware Disaster Evacuation and Rescue Coordination
                 </p>
@@ -71,49 +73,39 @@ function App() {
 
             <section className="dashboard-cards">
 
-              <article className="overview-card">
-                <span className="card-label">SYSTEM</span>
-                <h2>System Health</h2>
+              
 
-                {loading && (
-                  <p>Checking backend connection...</p>
-                )}
-
-                {!loading && health && (
-                  <>
-                    <p className="status">
-                      <span className="status-dot" />
-                      Backend API: Running
-                    </p>
-                    <p>Database: {health.data.database}</p>
-                    <p>{health.message}</p>
-                  </>
-                )}
-
-                {!loading && error && (
-                  <p className="error">
-                    Connection failed: {error}
-                  </p>
-                )}
-              </article>
-
+              {/* Live Map */}
               <article className="overview-card live-map-card">
                 <LiveMap />
               </article>
 
+              {/* Emergency Alerts */}
               <article className="overview-card">
-                <span className="card-label">PUBLIC SAFETY</span>
+                <span className="card-label">
+                  PUBLIC SAFETY
+                </span>
+
                 <h2>Emergency Alerts</h2>
-                <p>Important disaster alerts will appear here.</p>
+
+                <p>
+                  Important disaster alerts will appear here.
+                </p>
               </article>
 
+              {/* Shelters */}
               <article className="overview-card">
-                <span className="card-label">SUPPORT</span>
+                <span className="card-label">
+                  SUPPORT
+                </span>
+
                 <h2>Shelters</h2>
+
                 <p>
                   Open Shelter Information from the sidebar
                   to view available shelter details.
                 </p>
+
                 <button
                   type="button"
                   onClick={() => setActivePage('Shelters')}
@@ -122,10 +114,12 @@ function App() {
                 </button>
               </article>
 
+              {/* Citizen Status */}
               <article className="overview-card citizen-status-card">
                 <CitizenStatusPanel />
               </article>
 
+              {/* Emergency Form */}
               <article className="overview-card emergency-form-card">
                 <EmergencyForm />
               </article>
@@ -137,14 +131,17 @@ function App() {
         {activePage === 'Shelters' && (
           <ShelterModule />
         )}
+
         {activePage === 'Rescue Teams' && (
           <RescueTeam />
-      )}
-      {activePage === 'Citizens' && (
-  <section className="overview-card">
-    <CitizenStatusPanel />
-  </section>
-)}
+        )}
+
+        {activePage === 'Citizens' && (
+          <section className="overview-card">
+            <CitizenStatusPanel />
+          </section>
+        )}
+
         {activePage === 'Live Map' && (
           <section className="overview-card">
             <h2>Live Map</h2>
@@ -153,22 +150,16 @@ function App() {
         )}
 
         {activePage === 'Alerts' && (
-            <Alerts />
-              )}
+          <Alerts />
+        )}
 
         {activePage === 'Settings' && (
-           <Settings />
-          )}
+          <Settings />
+        )}
+
       </main>
     </div>
   );
 }
 
 export default App;
-
-
-       
-   
-        
-   
-
