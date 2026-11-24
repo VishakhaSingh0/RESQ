@@ -18,7 +18,7 @@ async function connectDB() {
 mongoose.connection.on('disconnected', () => {
   console.log('MongoDB DISCONNECTED event detected');
 });
-    console.log('RESQ connected to MongoDB');
+    console.log('NEXORA connected to MongoDB');
     return true;
   } catch (error) {
   console.error('MongoDB connection failed:', error.message);

@@ -63,7 +63,7 @@ async function startServer() {
   }
 
   app.listen(PORT, () => {
-    console.log(`RESQ server running on port ${PORT}`);
+    console.log(`NEXORA server running on port ${PORT}`);
   });
 }
 

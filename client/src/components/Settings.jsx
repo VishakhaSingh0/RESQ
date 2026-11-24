@@ -1,20 +1,31 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Settings.css';
 
 function Settings() {
   const [notifications, setNotifications] = useState(true);
-  const [theme, setTheme] = useState('Light');
+
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem('nexora-theme') || 'Light'
+  );
+
+  useEffect(() => {
+    document.documentElement.classList.toggle(
+      'dark-mode',
+      theme === 'Dark'
+    );
+
+    localStorage.setItem('nexora-theme', theme);
+  }, [theme]);
 
   return (
     <div className="settings-container">
       <h2>Settings</h2>
-      <p>Manage your RESQ application preferences.</p>
+      <p>Manage your NEXORA application preferences.</p>
 
       <div className="settings-card">
         <h3>Profile Settings</h3>
         <p>Admin Profile</p>
-        <p>Email: admin@resq.com</p>
+        <p>Email: admin@nexora.example</p>
       </div>
 
       <div className="settings-card">
@@ -41,8 +52,8 @@ function Settings() {
       </div>
 
       <div className="settings-card">
-        <h3>About RESQ</h3>
-        <p>RESQ - Disaster Management System</p>
+        <h3>About NEXORA</h3>
+        <p>NEXORA - Disaster Management System</p>
         <p>Version 1.0</p>
       </div>
     </div>

@@ -502,11 +502,16 @@ setEditingId(null);
   Edit
 </button>
 
-<button>
+<button
   type="button"
   className="add-shelter-button"
   onClick={() => handleDelete(shelter)}
-   Delete
+  style={{
+    backgroundColor: "#dc2626",
+    marginLeft: "10px",
+  }}
+>
+  Delete
 </button>
  {shelter.id.startsWith("TEST-") && (
      <p className="no-shelters">

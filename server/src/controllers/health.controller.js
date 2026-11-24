@@ -11,7 +11,7 @@ function getHealth(req, res) {
 
   res.status(200).json({
     success: true,
-    message: 'RESQ API is healthy',
+    message: 'NEXORA API is healthy',
     data: {
       api: 'running',
       database:

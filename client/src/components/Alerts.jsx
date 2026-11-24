@@ -16,6 +16,8 @@ function Alerts() {
   const [aiSuggestion, setAiSuggestion] = useState('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [refreshing, setRefreshing] = useState(false);
+  const [refreshMessage, setRefreshMessage] = useState('');
 
   // Load alerts from MongoDB
   const fetchAlerts = useCallback(async () => {
@@ -45,7 +47,32 @@ function Alerts() {
 
     return () => clearInterval(interval);
   }, [fetchAlerts]);
+  const refreshOfficialAlerts = async () => {
+  setRefreshing(true);
+  setRefreshMessage('');
 
+  try {
+    const response = await fetch(`${API_URL}/refresh`, {
+      method: 'POST',
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || 'Refresh failed');
+    }
+
+    await fetchAlerts();
+
+    setRefreshMessage(
+      `${result.message}. ${result.data.inserted} new alerts found.`
+    );
+  } catch (err) {
+    setRefreshMessage(`Refresh failed: ${err.message}`);
+  } finally {
+    setRefreshing(false);
+  }
+};
   // Rule-based priority suggestion
   const classifyAlert = () => {
     if (!title.trim()) {
@@ -221,13 +248,18 @@ function Alerts() {
         </div>
       </div>
 
-      <button
-        type="button"
-        onClick={fetchAlerts}
-        className="refresh-alerts-button"
-      >
-        Refresh Alerts
-      </button>
+     <button
+  type="button"
+  onClick={refreshOfficialAlerts}
+  className="refresh-alerts-button"
+  disabled={refreshing}
+>
+  {refreshing ? 'Refreshing...' : 'Refresh Alerts'}
+</button>
+
+{refreshMessage && (
+  <p role="status">{refreshMessage}</p>
+)}
 
       <h3>Add Manual Alert</h3>
 

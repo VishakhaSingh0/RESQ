@@ -1,5 +1,8 @@
 
 const Alert = require('../models/Alert');
+const {
+  fetchOfficialAlerts,
+} = require('../services/disasterAlerts.service');
 
 const allowedCategories = [
   'Medical emergency',
@@ -206,9 +209,30 @@ async function deleteAlert(req, res) {
   }
 }
 
+// Manually refresh official disaster alerts
+async function refreshAlerts(req, res) {
+  try {
+    const result = await fetchOfficialAlerts();
+
+    return res.status(200).json({
+      success: true,
+      message: result.errors > 0
+        ? 'Refresh completed with some errors'
+        : 'Official alerts refreshed successfully',
+      data: result,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+}
+
 module.exports = {
   getAlerts,
   addAlert,
   updateAlert,
   deleteAlert,
+  refreshAlerts,
 };

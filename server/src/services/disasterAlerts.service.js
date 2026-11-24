@@ -173,7 +173,7 @@ function buildAlertData(cap, info, link, itemTitle) {
   };
 }
 
-async function fetchOfficialAlerts() {
+async function processOfficialAlerts() {
   const feedUrl = process.env.SACHET_RSS_URL;
 
   if (!feedUrl) {
@@ -362,6 +362,21 @@ async function fetchOfficialAlerts() {
   }
 
   return result;
+}
+
+let activeRefresh = null;
+
+function fetchOfficialAlerts() {
+  if (activeRefresh) {
+    return activeRefresh;
+  }
+
+  activeRefresh = processOfficialAlerts()
+    .finally(() => {
+      activeRefresh = null;
+    });
+
+  return activeRefresh;
 }
 
 module.exports = {

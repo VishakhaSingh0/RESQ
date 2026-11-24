@@ -1,4 +1,3 @@
-
 const express = require('express');
 
 const router = express.Router();
@@ -8,9 +7,12 @@ const {
   addAlert,
   updateAlert,
   deleteAlert,
+  refreshAlerts,
 } = require('../controllers/alerts.controller');
 
 router.get('/', getAlerts);
+
+router.post('/refresh', refreshAlerts);
 
 router.post('/', addAlert);
 

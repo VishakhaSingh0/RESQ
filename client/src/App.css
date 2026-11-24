@@ -165,5 +165,331 @@
   min-width: 0;
 }
 
+/* NEXORA Dark Mode */
 
+html.dark-mode {
+  color-scheme: dark;
+  background: #0f172a;
+  color: #e2e8f0;
+}
 
+.dark-mode .dashboard-layout,
+.dark-mode .dashboard-main {
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+.dark-mode .dashboard-header h1 {
+  color: #f8fafc;
+}
+
+.dark-mode .dashboard-subtitle,
+.dark-mode .card-label {
+  color: #94a3b8;
+}
+
+.dark-mode .overview-card,
+.dark-mode .header-badge,
+.dark-mode .settings-card,
+.dark-mode .shelter-card,
+.dark-mode .shelter-form,
+.dark-mode .alert-item {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-color: #334155;
+  box-shadow: none;
+}
+
+.dark-mode .dashboard-main h2,
+.dark-mode .dashboard-main h3,
+.dark-mode .dashboard-main h4 {
+  color: #f1f5f9;
+}
+
+.dark-mode .dashboard-main p,
+.dark-mode .dashboard-main label {
+  color: #cbd5e1;
+}
+
+.dark-mode .dashboard-main input,
+.dark-mode .dashboard-main select,
+.dark-mode .dashboard-main textarea {
+  background: #1e293b;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+.dark-mode input::placeholder,
+.dark-mode textarea::placeholder {
+  color: #94a3b8;
+}
+
+.dark-mode .overview-card .status {
+  color: #4ade80;
+}
+
+.dark-mode .overview-card .error,
+.dark-mode .shelter-form-error {
+  color: #f87171;
+}
+
+.dark-mode .shelter-success {
+  color: #4ade80;
+}
+
+/* ==================================
+   NEXORA COMPLETE DARK MODE FIX
+   ================================== */
+
+html.dark-mode {
+  --dark-bg: #0f172a;
+  --dark-card: #1e293b;
+  --dark-border: #334155;
+  --dark-text: #f1f5f9;
+  --dark-muted: #cbd5e1;
+}
+
+/* Main sections */
+
+.dark-mode .rescue-page,
+.dark-mode .citizen-panel,
+.dark-mode .emergency-page,
+.dark-mode .shelter-module,
+.dark-mode .alerts-container,
+.dark-mode .settings-container,
+.dark-mode .live-map-section {
+  color: var(--dark-text);
+}
+
+/* All cards and summary boxes */
+
+.dark-mode .rescue-stat-card,
+.dark-mode .rescue-team-card,
+.dark-mode .rescue-form-card,
+.dark-mode .citizen-panel,
+.dark-mode .citizen-card,
+.dark-mode .emergency-main-card,
+.dark-mode .emergency-help-card,
+.dark-mode .shelter-summary > div,
+.dark-mode .shelter-card,
+.dark-mode .shelter-form,
+.dark-mode .alert-summary-card,
+.dark-mode .alert-item,
+.dark-mode .settings-card,
+.dark-mode .overview-card {
+  background: var(--dark-card);
+  color: var(--dark-text);
+  border-color: var(--dark-border);
+  box-shadow: none;
+}
+
+/* Headings */
+
+.dark-mode .dashboard-main h1,
+.dark-mode .dashboard-main h2,
+.dark-mode .dashboard-main h3,
+.dark-mode .dashboard-main h4 {
+  color: var(--dark-text);
+}
+
+/* Rescue Teams */
+
+.dark-mode .rescue-header p,
+.dark-mode .rescue-stat-card h3,
+.dark-mode .rescue-team-card p {
+  color: var(--dark-muted);
+}
+
+/* Citizen Status */
+
+.dark-mode .citizen-card {
+  background: #172033;
+}
+
+.dark-mode .citizen-id,
+.dark-mode .citizen-panel-header p,
+.dark-mode .citizen-details p,
+.dark-mode .citizen-details strong {
+  color: var(--dark-muted);
+}
+
+/* Shelter Management */
+
+.dark-mode .shelter-capacity span,
+.dark-mode .shelter-address,
+.dark-mode .shelter-coordinates,
+.dark-mode .shelter-header p,
+.dark-mode .shelter-summary p {
+  color: var(--dark-muted);
+}
+
+.dark-mode .capacity-track {
+  background: #475569;
+}
+
+.dark-mode .shelter-facilities span {
+  background: #263c59;
+  color: #bfdbfe;
+}
+
+/* Summary numbers */
+
+.dark-mode .dashboard-main .alert-summary-card h3,
+.dark-mode .dashboard-main .shelter-summary h3,
+.dark-mode .dashboard-main .rescue-stat-card h2 {
+  color: #93c5fd;
+}
+
+/* Alerts */
+
+.dark-mode .ai-suggestion {
+  background: #172e4d;
+  border-color: #3b82f6;
+  color: #dbeafe;
+}
+
+.dark-mode .alert-item a {
+  color: #93c5fd;
+}
+
+.dark-mode .dashboard-main .alert-error {
+  background: #451a1a;
+  color: #fca5a5;
+}
+
+/* Emergency Form */
+
+.dark-mode .emergency-field label,
+.dark-mode .emergency-choice-group legend,
+.dark-mode .emergency-guide-item strong {
+  color: var(--dark-text);
+}
+
+.dark-mode .emergency-field > small,
+.dark-mode .emergency-severity-option small,
+.dark-mode .emergency-privacy {
+  color: var(--dark-muted);
+}
+
+.dark-mode .emergency-type-option,
+.dark-mode .emergency-severity-option {
+  background: #172033;
+  color: var(--dark-text);
+  border-color: #475569;
+}
+
+.dark-mode .emergency-type-option:hover,
+.dark-mode .emergency-severity-option:hover {
+  background: #334155;
+}
+
+.dark-mode .emergency-type-icon {
+  background: #334155;
+  color: #e2e8f0;
+}
+
+/* Selected emergency type */
+
+.dark-mode .emergency-type-option.selected {
+  background: #4c1d2b;
+  border-color: #fb7185;
+  color: #fda4af;
+}
+
+.dark-mode .emergency-type-option.selected
+.emergency-type-icon {
+  background: #701a35;
+  color: #fda4af;
+}
+
+/* Selected severity levels */
+
+.dark-mode .severity-low.selected {
+  background: #123b2a;
+  border-color: #4ade80;
+}
+
+.dark-mode .severity-medium.selected {
+  background: #422f13;
+  border-color: #fbbf24;
+}
+
+.dark-mode .severity-high.selected {
+  background: #431f12;
+  border-color: #fb923c;
+}
+
+.dark-mode .severity-critical.selected {
+  background: #451a1a;
+  border-color: #f87171;
+}
+
+/* Emergency information boxes */
+
+.dark-mode .emergency-notice,
+.dark-mode .emergency-help-banner {
+  background: #3b1d29;
+  border-color: #9f4053;
+  color: #fda4af;
+}
+
+.dark-mode .emergency-help-note {
+  background: #172e4d;
+  border-color: #365b87;
+}
+
+.dark-mode .emergency-help-note strong {
+  color: #93c5fd;
+}
+
+/* Success and error messages */
+
+.dark-mode .dashboard-main .emergency-feedback.success {
+  background: #123b2a;
+  border-color: #166534;
+  color: #86efac;
+}
+
+.dark-mode .dashboard-main .emergency-feedback.error {
+  background: #451a1a;
+  border-color: #991b1b;
+  color: #fca5a5;
+}
+
+.dark-mode .dashboard-main .shelter-success {
+  color: #4ade80;
+}
+
+.dark-mode .dashboard-main .shelter-form-error {
+  color: #f87171;
+}
+
+/* Sidebar */
+
+.dark-mode .sidebar {
+  background: #111827;
+  border-right: 1px solid #334155;
+}
+
+.dark-mode .nav-item:hover:not(.active) {
+  background: #334155;
+}
+
+/* Live Map */
+
+.dark-mode .map-note,
+.dark-mode .map-legend {
+  color: var(--dark-muted);
+}
+
+.dark-mode .resq-map {
+  border-color: #475569;
+}
+
+/* Map popup readability */
+
+.dark-mode .dashboard-main .leaflet-popup-content h3,
+.dark-mode .dashboard-main .leaflet-popup-content h4,
+.dark-mode .dashboard-main .leaflet-popup-content p {
+  color: #1e293b;
+}

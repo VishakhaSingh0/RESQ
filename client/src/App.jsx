@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import './App.css';
 import Sidebar from './components/Sidebar';
@@ -16,6 +15,18 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  // Restore saved Dark Mode or Light Mode
+  useEffect(() => {
+    const savedTheme =
+      localStorage.getItem('nexora-theme') || 'Light';
+
+    document.documentElement.classList.toggle(
+      'dark-mode',
+      savedTheme === 'Dark'
+    );
+  }, []);
+
+  // API Health Check
   useEffect(() => {
     async function checkAPI() {
       try {
@@ -73,8 +84,6 @@ function App() {
 
             <section className="dashboard-cards">
 
-              
-
               {/* Live Map */}
               <article className="overview-card live-map-card">
                 <LiveMap />
@@ -128,20 +137,24 @@ function App() {
           </>
         )}
 
+        {/* Shelter Management */}
         {activePage === 'Shelters' && (
           <ShelterModule />
         )}
 
+        {/* Rescue Team Management */}
         {activePage === 'Rescue Teams' && (
           <RescueTeam />
         )}
 
+        {/* Citizen Management */}
         {activePage === 'Citizens' && (
           <section className="overview-card">
             <CitizenStatusPanel />
           </section>
         )}
 
+        {/* Live Map */}
         {activePage === 'Live Map' && (
           <section className="overview-card">
             <h2>Live Map</h2>
@@ -149,10 +162,12 @@ function App() {
           </section>
         )}
 
+        {/* Disaster Alerts */}
         {activePage === 'Alerts' && (
           <Alerts />
         )}
 
+        {/* Settings */}
         {activePage === 'Settings' && (
           <Settings />
         )}

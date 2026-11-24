@@ -95,7 +95,7 @@ function EmergencyForm() {
             <span>!</span>
           </div>
           <div>
-            <span className="emergency-eyebrow">RESQ • CITIZEN SUPPORT</span>
+            <span className="emergency-eyebrow">NEXORA • CITIZEN SUPPORT</span>
             <h2>Emergency Request</h2>
             <p>Share the details below so your request can be reviewed.</p>
           </div>
@@ -221,7 +221,7 @@ function EmergencyForm() {
 
           <p className="emergency-privacy">
             <span aria-hidden="true">🔒</span> Submit only accurate information.
-            This form sends your request to the RESQ server.
+            This form sends your request to the NEXORA server.
           </p>
         </form>
       </div>
