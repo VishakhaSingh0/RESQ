@@ -13,12 +13,19 @@ async function connectDB() {
 
   try {
     await mongoose.connect(mongoURI);
+    console.log('MongoDB connected:', mongoose.connection.readyState);
+
+mongoose.connection.on('disconnected', () => {
+  console.log('MongoDB DISCONNECTED event detected');
+});
     console.log('RESQ connected to MongoDB');
     return true;
   } catch (error) {
-    console.error('MongoDB connection failed:', error.message);
-    return false;
-  }
+  console.error('MongoDB connection failed:', error.message);
+  console.error('Detailed server errors:');
+  console.dir(error.reason, { depth: 5 });
+  return false;
+}
 }
 
 module.exports = connectDB;

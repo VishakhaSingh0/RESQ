@@ -55,8 +55,6 @@ function LiveMap() {
 
   return (
     <section className="live-map-section">
-      <h2>Live Map</h2>
-
       <p className="map-note">
         Shelter markers show database records. Locations and
         availability are not independently verified.

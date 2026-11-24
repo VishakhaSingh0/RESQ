@@ -187,4 +187,89 @@ async function createShelter(req, res) {
   }
 }
 
-module.exports = { getShelters, createShelter };
+async function updateShelter(req, res) {
+  try {
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database is not connected',
+      });
+    }
+
+    const updatedShelter = await Shelter.findOneAndUpdate(
+      { shelterId: req.params.id },
+      { $set: req.body },
+      { new: true, runValidators: true }
+    ).lean();
+
+    if (!updatedShelter) {
+      return res.status(404).json({
+        success: false,
+        message: 'Shelter not found',
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'Shelter updated successfully',
+      data: {
+        id: updatedShelter.shelterId,
+        name: updatedShelter.name,
+        location: updatedShelter.location,
+        address: updatedShelter.address,
+        status: updatedShelter.status,
+        available: updatedShelter.available,
+        capacity: updatedShelter.capacity,
+        facilities: updatedShelter.facilities,
+        latitude: updatedShelter.latitude,
+        longitude: updatedShelter.longitude,
+      },
+    });
+  } catch (error) {
+    console.error('Error updating shelter:', error.message);
+    return res.status(400).json({
+      success: false,
+      message: 'Failed to update shelter',
+    });
+  }
+}
+
+async function deleteShelter(req, res) {
+  try {
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        success: false,
+        message: 'Database is not connected',
+      });
+    }
+
+    const deletedShelter = await Shelter.findOneAndDelete({
+      shelterId: req.params.id,
+    });
+
+    if (!deletedShelter) {
+      return res.status(404).json({
+        success: false,
+        message: 'Shelter not found',
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'Shelter deleted successfully',
+    });
+  } catch (error) {
+    console.error('Error deleting shelter:', error.message);
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to delete shelter',
+    });
+  }
+}
+
+module.exports = {
+  getShelters,
+  createShelter,
+  updateShelter,
+  deleteShelter,
+};

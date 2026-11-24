@@ -140,6 +140,11 @@ function App() {
         {activePage === 'Rescue Teams' && (
           <RescueTeam />
       )}
+      {activePage === 'Citizens' && (
+  <section className="overview-card">
+    <CitizenStatusPanel />
+  </section>
+)}
         {activePage === 'Live Map' && (
           <section className="overview-card">
             <h2>Live Map</h2>

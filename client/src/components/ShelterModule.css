@@ -320,3 +320,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+
+.shelter-card button {
+  margin-right: 12px;
+  margin-top: 12px;
+}

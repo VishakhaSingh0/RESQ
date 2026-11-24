@@ -28,6 +28,7 @@ function ShelterModule() {
   const [showForm, setShowForm] = useState(false);
   const [form, setForm] = useState(initialForm);
   const [saving, setSaving] = useState(false);
+  const [editingId, setEditingId] = useState(null);
   const [formError, setFormError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -76,6 +77,53 @@ function ShelterModule() {
     (s) => s.status === "Limited"
   ).length;
 
+  async function handleDelete(shelter) {
+  const confirmed = window.confirm(
+    `Are you sure you want to delete ${shelter.name}?`
+  );
+
+  if (!confirmed) return;
+
+  try {
+    const response = await fetch(
+      `${API_BASE_URL}/shelters/${shelter.id}`,
+      { method: "DELETE" }
+    );
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(result.message || "Failed to delete shelter");
+    }
+
+    setShelters((previous) =>
+      previous.filter((item) => item.id !== shelter.id)
+    );
+
+    setSuccessMessage("Shelter deleted successfully!");
+    setFormError("");
+  } catch (err) {
+    setError(err.message || "Unable to delete shelter");
+  }
+}
+   function handleEdit(shelter) {
+    setEditingId(shelter.id);
+    setForm({
+    shelterId: shelter.id,
+    name: shelter.name,
+    location: shelter.location,
+    address: shelter.address,
+    status: shelter.status,
+    available: String(shelter.available),
+    capacity: String(shelter.capacity),
+    facilities: shelter.facilities.join(", "),
+    latitude: String(shelter.latitude),
+    longitude: String(shelter.longitude),
+  });
+  setShowForm(true);
+  setFormError("");
+  setSuccessMessage("");
+}
   function handleInputChange(event) {
     const { name, value } = event.target;
 
@@ -140,13 +188,18 @@ function ShelterModule() {
     try {
       setSaving(true);
 
-      const response = await fetch(`${API_BASE_URL}/shelters`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(shelterData),
-      });
+     const response = await fetch(
+  editingId
+    ? `${API_BASE_URL}/shelters/${editingId}`
+    : `${API_BASE_URL}/shelters`,
+  {
+    method: editingId ? "PUT" : "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(shelterData),
+  }
+);
 
       const result = await response.json();
 
@@ -154,7 +207,19 @@ function ShelterModule() {
         throw new Error(result.message || "Failed to add shelter");
       }
 
-      setShelters((previous) => [result.data, ...previous]);
+      if (editingId) {
+  setShelters((previous) =>
+    previous.map((shelter) =>
+      shelter.id === editingId ? result.data : shelter
+    )
+  );
+  setSuccessMessage("Shelter updated successfully!");
+} else {
+  setShelters((previous) => [result.data, ...previous]);
+  setSuccessMessage("Shelter added successfully!");
+}
+
+setEditingId(null);
       setForm(initialForm);
       setShowForm(false);
       setSuccessMessage("Shelter added successfully!");
@@ -196,7 +261,7 @@ function ShelterModule() {
 
       {showForm && (
         <form className="shelter-form" onSubmit={handleSubmit}>
-          <h3>Add New Shelter</h3>
+         <h3>{editingId ? "Edit Shelter" : "Add New Shelter"}</h3>
 
           <div className="shelter-form-grid">
             <label>
@@ -328,7 +393,11 @@ function ShelterModule() {
             className="add-shelter-button"
             disabled={saving}
           >
-            {saving ? "Saving..." : "Save Shelter"}
+            {saving
+  ? "Saving..."
+  : editingId
+  ? "Update Shelter"
+  : "Save Shelter"}
           </button>
         </form>
       )}
@@ -425,10 +494,24 @@ function ShelterModule() {
                 Coordinates: {shelter.latitude}, {shelter.longitude}
               </p>
 
-              {shelter.id.startsWith("TEST-") && (
-                <p className="no-shelters">
-                  Test record — not a verified real-world shelter.
-                </p>
+              <button
+  type="button"
+  className="add-shelter-button"
+  onClick={() => handleEdit(shelter)}
+>
+  Edit
+</button>
+
+<button>
+  type="button"
+  className="add-shelter-button"
+  onClick={() => handleDelete(shelter)}
+   Delete
+</button>
+ {shelter.id.startsWith("TEST-") && (
+     <p className="no-shelters">
+                Test record — not a verified real-world shelter.
+            </p>
               )}
             </div>
           ))

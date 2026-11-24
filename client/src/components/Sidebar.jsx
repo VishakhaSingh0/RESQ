@@ -7,6 +7,7 @@ const navItems = [
   { label: 'Live Map', icon: '⌖' },
   { label: 'Alerts', icon: '⚠' },
   { label: 'Shelters', icon: '⌂' },
+  { label: 'Citizens', icon: '👥' },
   { label: 'Rescue Teams', icon: '🚑' },
   { label: 'Settings', icon: '⚙' },
 ];
